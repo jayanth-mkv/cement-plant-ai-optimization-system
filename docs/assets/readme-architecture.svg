@@ -1,15 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
   <title id="title">Cement Plant AI prototype architecture</title>
   <desc id="desc">A three-station operations rail moves plant data through AI-assisted reasoning to an operator-reviewed decision.</desc>
+  <defs>
+    <marker id="direction" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0l12 6-12 6z" fill="#1D1A17"/>
+    </marker>
+  </defs>
   <rect width="1400" height="720" fill="#F7F2E8"/>
   <rect x="28" y="28" width="1344" height="664" fill="none" stroke="#1D1A17" stroke-width="2"/>
   <rect x="28" y="28" width="10" height="664" fill="#A4773F"/>
-  <text x="70" y="78" fill="#A4773F" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2.5">CEMENT PLANT AI / OPERATIONS RAIL 01</text>
+  <text x="70" y="78" fill="#875C2C" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2.5">CEMENT PLANT AI / OPERATIONS RAIL 01</text>
   <text x="70" y="142" fill="#1D1A17" font-family="Georgia, Times New Roman, serif" font-size="50" font-weight="700">Observe. Reason. Review.</text>
   <text x="1330" y="136" fill="#7A644B" font-family="Courier New, monospace" font-size="13" text-anchor="end">THE AGENT ADVISES · THE OPERATOR DECIDES</text>
   <line x1="70" y1="174" x2="1330" y2="174" stroke="#D7C9B3" stroke-width="2"/>
 
-  <line x1="170" y1="338" x2="1230" y2="338" stroke="#1D1A17" stroke-width="5"/>
+  <g fill="none" stroke="#1D1A17" stroke-width="5" marker-end="url(#direction)">
+    <line x1="302" y1="338" x2="636" y2="338"/>
+    <line x1="762" y1="338" x2="1096" y2="338"/>
+  </g>
   <g fill="#F7F2E8" stroke="#1D1A17" stroke-width="5">
     <circle cx="240" cy="338" r="62"/><circle cx="700" cy="338" r="62"/><circle cx="1160" cy="338" r="62"/>
   </g>

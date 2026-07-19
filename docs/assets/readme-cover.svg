@@ -5,7 +5,7 @@
   <rect x="28" y="28" width="1144" height="574" fill="none" stroke="#1D1A17" stroke-width="2"/>
   <rect x="28" y="28" width="12" height="574" fill="#A4773F"/>
 
-  <text x="72" y="78" fill="#A4773F" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2.5">FIELD MANUAL / OPS 01</text>
+  <text x="72" y="78" fill="#875C2C" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2.5">FIELD MANUAL / OPS 01</text>
   <text x="776" y="78" fill="#1D1A17" font-family="Courier New, monospace" font-size="13" text-anchor="end">AI-ASSISTED DECISION SUPPORT</text>
   <line x1="72" y1="108" x2="776" y2="108" stroke="#D7C9B3" stroke-width="2"/>
 

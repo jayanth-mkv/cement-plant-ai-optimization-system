@@ -15,16 +15,14 @@
 <p align="center">
   <a href="#what-is-cement-plant-ai-optimization">What is it?</a> ·
   <a href="#capabilities">Capabilities</a> ·
-  <a href="docs/assets/demos/cement-ai-walkthrough.mp4">Full walkthrough</a> ·
+  <a href="#walkthrough">Walkthrough</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#known-limitations">Limitations</a>
 </p>
 
 <p align="center">
-  <a href="docs/assets/demos/cement-ai-walkthrough.mp4">
-    <img src="docs/assets/demos/cement-ai-preview.gif" width="92%" alt="Animated Cement Plant AI demo showing executive monitoring, agent analysis, AI insights, and fuel optimization">
-  </a>
+  <img src="docs/assets/demos/cement-ai-preview.gif" width="92%" alt="Animated Cement Plant AI demo showing executive monitoring, agent analysis, AI insights, and fuel optimization">
 </p>
 
 ## What is Cement Plant AI Optimization?
