@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Cement Plant AI Optimization icon</title>
+  <desc id="desc">A simplified cement plant with an operations gauge.</desc>
+  <rect x="12" y="12" width="232" height="232" rx="54" fill="#E6D1A7" stroke="#241E16" stroke-width="8"/>
+  <path d="M46 190V126l42 24v-42l42 24V92h34v98H46Z" fill="#241E16"/>
+  <path d="M62 169h20M101 169h20M140 169h20" stroke="#E6D1A7" stroke-width="10" stroke-linecap="square"/>
+  <path d="M142 92V56h20v36M92 108V68h20v52" fill="none" stroke="#241E16" stroke-width="12" stroke-linejoin="round"/>
+  <circle cx="188" cy="82" r="28" fill="#E6D1A7" stroke="#241E16" stroke-width="8"/>
+  <path d="M188 82l13-12M172 94a22 22 0 0 1 32 0" fill="none" stroke="#241E16" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="188" cy="82" r="5" fill="#241E16"/>
+</svg>

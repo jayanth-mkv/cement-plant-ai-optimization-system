@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Cement Plant AI Optimization</title>
+  <desc id="desc">Kraft-paper operations-manual cover for an AI-assisted cement production prototype.</desc>
+  <rect width="1200" height="630" fill="#E6D1A7"/>
+  <rect x="28" y="28" width="1144" height="574" fill="none" stroke="#241E16" stroke-width="2"/>
+  <rect x="28" y="28" width="112" height="574" fill="#241E16"/>
+  <text x="84" y="90" fill="#E6D1A7" font-family="Courier New, monospace" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="3">CPA</text>
+  <line x1="84" y1="126" x2="84" y2="484" stroke="#E6D1A7" stroke-width="1" opacity=".55"/>
+  <text x="84" y="554" fill="#E6D1A7" font-family="Courier New, monospace" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1.5">PROTO</text>
+
+  <text x="188" y="82" fill="#665441" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2">OPERATIONS MANUAL / 01</text>
+  <text x="188" y="185" fill="#241E16" font-family="Georgia, Times New Roman, serif" font-size="66" font-weight="700" font-style="normal">Cement Plant</text>
+  <text x="188" y="267" fill="#241E16" font-family="Georgia, Times New Roman, serif" font-size="66" font-weight="400" font-style="italic">AI Optimization</text>
+  <line x1="188" y1="305" x2="1092" y2="305" stroke="#241E16" stroke-width="2"/>
+
+  <text x="188" y="354" fill="#241E16" font-family="Arial, Helvetica, sans-serif" font-size="25">Decision support across cement production.</text>
+  <text x="188" y="391" fill="#665441" font-family="Arial, Helvetica, sans-serif" font-size="18">Dashboard, process data, agent reasoning, and operator review.</text>
+
+  <rect x="188" y="436" width="904" height="72" fill="#241E16"/>
+  <text x="218" y="480" fill="#E6D1A7" font-family="Courier New, monospace" font-size="19">.\dev.ps1 dev</text>
+
+  <text x="188" y="552" fill="#665441" font-family="Courier New, monospace" font-size="13" letter-spacing=".7">NEXT.JS / FASTAPI / LANGGRAPH / MCP / POSTGRESQL</text>
+  <text x="1092" y="552" fill="#241E16" font-family="Courier New, monospace" font-size="13" text-anchor="end">HACKATHON PROTOTYPE</text>
+</svg>

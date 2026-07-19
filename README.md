@@ -1,311 +1,201 @@
-# Cement Plant AI Optimization Platform
+<p align="center">
+  <img src="docs/assets/icon.svg" width="132" alt="Cement Plant AI operations icon">
+</p>
 
-## 🏭 Overview
+<h1 align="center">Cement Plant AI Optimization</h1>
 
-A Generative AI-powered autonomous cement plant optimization platform built for the **GenAI Exchange Hackathon PS-2**. This system enables real-time monitoring and optimization of cement operations, driving energy savings, quality assurance, cost reduction, alternative fuel integration, and predictive maintenance—all powered by intelligent AI recommendations via Gemini and Google Cloud Vision.
+<p align="center"><strong>An AI-assisted operations prototype for monitoring cement production, exploring cross-process trade-offs, and presenting optimization recommendations in real time.</strong></p>
 
----
+<p align="center">
+  <a href="frontend/package.json"><img alt="Next.js 15" src="https://img.shields.io/badge/Next.js-15-241E16?logo=next.js&logoColor=white"></a>
+  <a href="server/pyproject.toml"><img alt="Python 3.13 and FastAPI" src="https://img.shields.io/badge/FastAPI-Python_3.13-665441?logo=fastapi&logoColor=white"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-241E16"></a>
+</p>
 
-## ⚡ Quick Start (Developers)
+<p align="center">
+  <a href="#what-is-cement-plant-ai-optimization">What is it?</a> ·
+  <a href="#capabilities">Capabilities</a> ·
+  <a href="docs/assets/demos/cement-ai-walkthrough.mp4">Full walkthrough</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#quick-start">Quick start</a> ·
+  <a href="#known-limitations">Limitations</a>
+</p>
 
-PowerShell helper script at repo root: `dev.ps1` (ensure execution policy allows local scripts: `Set-ExecutionPolicy -Scope Process Bypass` if needed).
+<p align="center">
+  <a href="docs/assets/demos/cement-ai-walkthrough.mp4">
+    <img src="docs/assets/demos/cement-ai-preview.gif" width="92%" alt="Animated Cement Plant AI demo showing executive monitoring, agent analysis, AI insights, and fuel optimization">
+  </a>
+</p>
 
-1. Clone & install deps:
-   ```powershell
-   git clone <repo-url>
-   cd Cement-Plant-AI-Optimization-System
-   cd frontend; npm install; cd ..
-   ```
-2. Backend env (`server/.env`) – server variables:
+## What is Cement Plant AI Optimization?
 
-   ```
-   SUPABASE_URL=...
-   SUPABASE_KEY=...
-   SUPABASE_SERVICE_ROLE_KEY=...
-   API_HOST=0.0.0.0
-   API_PORT=8000
-   DEBUG=true
-   SCHEDULER_TIMEZONE=UTC
-   DATABASE_URL=postgresql://user:pass@host:5432/postgres
-   ```
+Cement Plant AI Optimization is an end-to-end hackathon prototype for exploring plant operations, cross-process trade-offs, and AI-assisted recommendations from one operator-facing workspace.
 
-   Agent (LangGraph) variables (may live in `server/.env` or separate `server/cement_agent/.env`):
+It combines a Next.js dashboard, FastAPI service, LangGraph/Gemini decision agent, and PostgreSQL data access through MCP. The experience is designed for scenario exploration and qualified operator review, not autonomous plant control.
 
-   ```
-   DATABASE_URI=postgresql://user:pass@host:5432/postgres   # Used by MCP tools & agent graph
-   GEMINI_API_KEY=...    # or GOOGLE_API_KEY depending on provider naming
-   GOOGLE_API_KEY=...    # kept for compatibility with google-genai client
-   GROQ_API_KEY=...      # (optional) if adding Groq models later
-   LANGSMITH_PROJECT=cement-plant-optimization  # (optional) tracing/observability
-   ```
+> **Project status:** Hackathon prototype built for the Google Gen AI Exchange Hackathon 2025. The repository includes the dashboard, FastAPI service, LangGraph agent, WebSocket flows, and PostgreSQL/MCP integration. KPI improvements shown in the product are simulated targets for demonstration; they are not production-plant measurements.
 
-3. Run services (each opens own terminal window):
-   ```powershell
-   ./dev.ps1 mcp    # Postgres MCP tools (SSE :8080)
-   ./dev.ps1 back   # FastAPI backend
-   ./dev.ps1 agent  # LangGraph agent (Gemini + tools)
-   ./dev.ps1 front  # Next.js frontend
-   ```
-   Or all at once:
-   ```powershell
-   ./dev.ps1 dev
-   ```
-4. Open:
+## Capabilities
 
-   - Frontend: http://localhost:3000
-   - API Docs: http://localhost:8000/docs
-   - WebSocket: ws://localhost:8000/ws/plant-data
-   - Agent Dev UI: http://localhost:2024 (default langgraph dev)
+| Surface | Implemented capability |
+| --- | --- |
+| Operations dashboard | Live KPIs, process views, optimization controls, alerts, and trend visualizations |
+| Backend API | FastAPI routes for plant data, analytics, AI recommendations, and WebSocket streams |
+| Decision agent | LangGraph workflow using Gemini and database tools exposed through MCP |
+| Data layer | PostgreSQL/Supabase access for operational and historical data |
+| Process coverage | Raw materials, kiln control, quality, alternative fuels, maintenance, and utilities |
 
-5. (Optional) Manual commands if not using script:
+## Walkthrough
 
-   ```powershell
-   # Backend API
-   cd server; uv run main.py
+A typical demo flow is:
 
-   # Start MCP Postgres server (required BEFORE starting agent so tools resolve)
-   uv run postgres-mcp --sse-port 8080 --transport sse --access-mode unrestricted <DATABASE_URI or URL>
+1. Stream plant data into the dashboard.
+2. Inspect energy, quality, cost, and maintenance signals across process areas.
+3. Ask the agent to analyze a plant condition or optimization goal.
+4. Review the recommendation, supporting metrics, and projected operational impact.
 
-   # In a new terminal: start LangGraph agent (expects MCP at :8080)
-   cd server/cement_agent; uv run langgraph dev
-   ```
+The architecture below is the canonical overview of the current prototype.
 
----
+## Architecture
 
-## ✨ Key Features
+<p align="center">
+  <img src="docs/assets/readme-architecture.svg" width="92%" alt="Cement Plant AI prototype flow from plant data through APIs and agent reasoning to operator review">
+</p>
 
-- **Raw Material Optimization:** Real-time feed variability prediction and grinding efficiency optimization
-- **Autonomous Kiln Control:** AI-powered temperature and fuel mix optimization for energy reduction
-- **Quality Assurance AI:** Computer Vision defect detection with 99%+ accuracy and strength prediction
-- **Alternative Fuel Maximization:** Intelligent fuel blend optimization for up to 40% thermal substitution
-- **Cross-Process Intelligence:** Strategic plant-wide optimization using holistic AI decision-making
-- **Predictive Maintenance:** Equipment failure prediction and utilities optimization
+### Runtime services
 
-## 🚀 Business Impact
+| Service | Default address | Purpose |
+| --- | --- | --- |
+| Frontend | `http://localhost:3000` | Operations dashboard |
+| Backend | `http://localhost:8000` | REST API, WebSockets, and OpenAPI docs at `/docs` |
+| PostgreSQL MCP | `http://localhost:8080` | Database tools for the agent |
+| LangGraph dev server | `http://localhost:2024` | Agent development and inspection |
 
-- **Energy Savings:** 15% average reduction across all processes
-- **Quality Improvement:** 99%+ defect detection accuracy
-- **Cost Reduction:** Up to 40% production cost savings
-- **Environmental Impact:** Significant CO₂ reduction through alternative fuel usage
-- **Implementation Speed:** 2-4 months vs 3-5 years for traditional systems
-
-## 🏗️ System Architecture
-
-**Data Flow:**
-Plant Sensors → N8N Workflows → PostgreSQL Database → FastAPI Backend (Gemini AI) → Next.js Frontend via WebSocket/Supabase
-
-**Core Components:**
-
-- **AI Processing Layer:** Gemini API for strategic recommendations and optimization
-- **Computer Vision Pipeline:** Google Cloud Vision API for quality control (coming soon)
-- **Real-time Dashboard:** Next.js with Supabase for live monitoring
-- **Real-time Data Collection:** N8N/python workflows with 30-second sensor data ingestion (not shared)
-- **Cross-Process Optimization:** Holistic AI decision-making across all plant operations
-
-## 🛠️ Tech Stack
-
-**Frontend**
-
-- Next.js 15 (React 19 + Turbopack)
-- TypeScript
-- Tailwind CSS v4 & Radix UI primitives
-- Recharts (data visualization)
-- Lucide Icons
-- Supabase JS (auth / realtime client)
-
-**Backend & APIs**
-
-- FastAPI (REST + OpenAPI docs)
-- Native WebSockets (real-time plant + alerts streams)
-- Pydantic v2 & pydantic-settings (data validation & config)
-- asyncpg (high‑performance Postgres driver)
-- Supabase Python client (data access layer abstraction)
-- APScheduler (scheduled optimization / refresh tasks)
-
-**AI / Agent Orchestration**
-
-- Google Gemini (google-genai)
-- LangChain Google GenAI integration
-- LangGraph (agent workflow/state management)
-- MCP (Model Context Protocol) adapters: postgres-mcp, langchain-mcp-adapters
-- (Planned) Google Cloud Vision API for defect detection pipeline
-
-**Data & Storage**
-
-- PostgreSQL (core operational + historical data)
-- Supabase (managed Postgres + realtime channel streaming)
-- Structured schemas via internal table abstractions & Pydantic models
-
-**Real-time & Streaming**
-
-- WebSocket channels (plant-data, alerts)
-- Supabase Realtime subscriptions (frontend sync)
-
-**Automation & Workflows**
-
-- N8N workflows (sensor ingestion, ETL, alert triggers) (not shared)
-- Python scheduled jobs (optimization cycles / recommendation refresh) (not shared)
-
-**Dev Tooling & Ops**
-
-- uv (Python dependency & virtual env manager – lockfile tracked)
-- Docker (backend containerization)
-- ESLint + TypeScript (static analysis)
-- Environment management via .env + pydantic-settings
-
-**UI / UX Enhancements**
-
-- Component abstractions (cards, KPI widgets, sliders, dialogs)
-- Responsive layout modules per plant domain (kiln, raw materials, quality, etc.)
-
-**Security & Config**
-
-- API key & secret management through environment variables
-- Fine‑grained database access via Supabase policies (planned)
-
-> Planned items (e.g., Vision API integration, RLS policies) are not yet implemented, they are tagged as planned
-
-## 🚀 Getting Started
+## Quick start
 
 ### Prerequisites
 
-- Node.js 18+
-- Python 3.9+
-- PostgreSQL 14+
-- Supabase project setup
-- Google Cloud account with AI APIs enabled
-- N8N installation
+- Node.js 20+
+- Python 3.13
+- [uv](https://docs.astral.sh/uv/)
+- PostgreSQL or a Supabase project
+- Gemini API key
+- Windows PowerShell for the included multi-service helper
 
-### Setup Instructions
+### 1. Install
 
-1. **Clone and Install**
+```powershell
+git clone https://github.com/jayanth-mkv/cement-plant-ai-optimization-system.git
+cd cement-plant-ai-optimization-system
 
-   ```bash
-   git clone <repository-url>
-   cd cement-plant-ai
-   npm install
-   pip install -r requirements.txt
-   ```
+cd frontend
+npm install
+cd ..\server
+uv sync
+cd ..
+```
 
-2. **Environment Configuration**
+### 2. Configure
 
-   ````bash
-   # Create .env files
-   cp .env.example .env
+Copy `server/.env.example` to `server/.env`, then provide your own credentials:
 
-   # Add your API keys:
-   GOOGLE_AI_API_KEY=your_gemini_api_key``` Supabase_CONFIG=your_Supabase_config
-   POSTGRES_URL=your_database_url
-   ````
+```dotenv
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+DATABASE_URL=postgresql://user:password@host:5432/database
+API_HOST=0.0.0.0
+API_PORT=8000
+DEBUG=True
+SCHEDULER_TIMEZONE=UTC
+```
 
-3. **Database Setup**
+The agent also needs a database connection and model credential in `server/cement_agent/.env` or its runtime environment:
 
-   ```bash
-   # Run database migrations
-   python scripts/setup_database.py
+```dotenv
+DATABASE_URI=postgresql://user:password@host:5432/database
+GEMINI_API_KEY=your_gemini_api_key
+GOOGLE_API_KEY=your_gemini_api_key
+LANGSMITH_PROJECT=cement-plant-optimization
+```
 
-   # Import sample data
-   python scripts/import_sample_data.py
-   ```
+Never commit real credentials. The examples above are placeholders.
 
-4. **Start Services**
+### 3. Run
 
-   ```bash
-   # Terminal 1: Start backend
-   uvicorn main:app --reload --port 8000
+```powershell
+.\dev.ps1 dev
+```
 
-   # Terminal 2: Start frontend
-   npm run dev
+The helper opens the frontend, backend, agent, and MCP service in separate PowerShell windows. Start one service at a time when debugging:
 
-   # Terminal 3: Start N8N workflows
-   n8n start
-   ```
+```powershell
+.\dev.ps1 mcp
+.\dev.ps1 back
+.\dev.ps1 agent
+.\dev.ps1 front
+```
 
-5. **Access Application**
-   - Frontend Dashboard: http://localhost:3000
-   - Backend API: http://localhost:8000/docs
-   - N8N Workflows: http://localhost:5678
+## Manual development commands
 
-## 👥 Developer Responsibilities
+```powershell
+# Backend
+cd server
+uv run main.py
 
-### **Frontend (F) - Next.js + Supabase**
+# PostgreSQL MCP — run before the agent
+uv run postgres-mcp --sse-port 8080 --transport sse --access-mode unrestricted $env:DATABASE_URI
 
-- Real-time dashboard development and UI/UX design
-- Supabase integration for live data streaming
-- Mobile responsiveness and component architecture
-- Demo preparation and presentation materials
+# Agent
+cd cement_agent
+uv run langgraph dev
 
-### **Backend (B) - FastAPI + AI/ML**
+# Frontend
+cd ..\..\frontend
+npm run dev
+```
 
-- API development and WebSocket connections
-- Gemini AI and Computer Vision API integration
-- ML models for optimization algorithms
-- Performance tuning and error handling
+## Prototype targets
 
-### **Database/N8N (D) - Data Engineering**
+These values describe the targets modeled in the hackathon experience, not independently validated production results:
 
-- Database schema design and optimization
-- N8N workflow development for data pipelines
-- Real-time data streaming and ETL processes
-- Monitoring, alerts, and backup strategies
+| Area | Demonstrated target |
+| --- | --- |
+| Energy | Up to 15% modeled reduction |
+| Alternative fuel | Up to 40% modeled thermal substitution |
+| Quality inspection | 99%+ target for the planned vision-assisted workflow |
+| Unplanned maintenance | 20% modeled reduction |
 
-## 🎯 Demo Strategy
+## Technology
 
-### **Opening Impact (2 minutes)**
+- **Frontend:** Next.js 15, React 19, TypeScript, Tailwind CSS, Radix UI, Recharts
+- **Backend:** FastAPI, Pydantic, asyncpg, APScheduler, WebSockets
+- **Agent layer:** Gemini, LangGraph, LangChain MCP adapters, PostgreSQL MCP
+- **Data:** PostgreSQL and Supabase Realtime
+- **Tooling:** uv, npm, Docker, ESLint
 
-1. Live dashboard showing 15% energy reduction in real-time
-2. Autonomous AI making kiln temperature adjustments
-3. Cost savings tracker displaying immediate ROI
+## Repository map
 
-### **Technical Innovation (3 minutes)**
+```text
+.
+├── frontend/              Next.js dashboard
+├── server/                FastAPI service and data layer
+│   └── cement_agent/      LangGraph agent and MCP tools
+├── dev.ps1                Windows multi-service launcher
+└── todo.md                Project backlog
+```
 
-1. Voice command: "Gemini, optimize kiln efficiency"
-2. Computer Vision detecting cement defects in real-time
-3. Cross-process AI optimizing entire plant simultaneously
+## Known limitations
 
-### **Business Value (3 minutes)**
+- The data-ingestion workflows used for the demonstration are not included.
+- Computer-vision quality inspection and production-grade Supabase policies remain planned work.
+- The prototype is not a replacement for a plant DCS/SCADA safety system.
+- Recommendations must be reviewed by qualified operators before any real-world use.
 
-1. Sustainability dashboard showing CO₂ reduction
-2. Predictive maintenance preventing downtime
-3. Alternative fuel optimization results
+## Contributing
 
-### **Scalability (2 minutes)**
+Focused issues and pull requests are welcome. Please describe the process area, expected behavior, and how the change can be tested.
 
-1. Multi-plant network management capability
-2. Integration with existing plant systems
-3. Mobile app for remote operations
+## License
 
-## 📊 Key Performance Indicators
-
-- **Energy Efficiency:** 15% average reduction
-- **Quality Score:** 99%+ defect detection accuracy
-- **Cost Savings:** Up to 40% production cost reduction
-- **Environmental Impact:** 20-40% alternative fuel usage
-- **Downtime Reduction:** 20% decrease in unplanned maintenance
-- **ROI Timeline:** 2-4 months implementation
-
-## 🏆 Hackathon Winning Features
-
-- **Real-time AI Optimization:** Live energy and cost savings display
-- **Natural Language Interface:** Voice commands for plant operations
-- **Computer Vision Quality Control:** Instant defect detection
-- **Cross-Process Intelligence:** Holistic plant optimization
-- **Sustainability Dashboard:** Real-time CO₂ reduction tracking
-- **Mobile Accessibility:** Remote monitoring and control capabilities
-
-## 📈 Scalability & Future Roadmap
-
-- **Multi-Plant Network:** Centralized management of multiple cement plants
-- **Advanced Analytics:** Machine learning model improvements
-- **Integration APIs:** Connect with existing DCS/SCADA systems
-- **Industry Adoption:** Scalable for India's cement industry transformation
-
-## 🤝 Contributing
-
-This project is developed for the GenAI Exchange Hackathon. For the competition period, please refer to the stage-wise TODO list above for development coordination.
-
-## 📄 License
-
-Built for GenAI Exchange Hackathon - PS-2: Optimizing Cement Operations with Generative AI
-
----
+[MIT](LICENSE)
