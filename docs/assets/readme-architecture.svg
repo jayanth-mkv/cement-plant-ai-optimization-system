@@ -1,44 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
   <title id="title">Cement Plant AI prototype architecture</title>
-  <desc id="desc">Plant and simulated data flow through PostgreSQL and FastAPI into an agent-assisted dashboard where operators review recommendations.</desc>
-  <rect width="1400" height="720" fill="#E6D1A7"/>
-  <rect x="26" y="26" width="1348" height="668" fill="none" stroke="#241E16" stroke-width="2"/>
-  <text x="70" y="80" fill="#665441" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2">SYSTEM STUDY / 01</text>
-  <text x="70" y="132" fill="#241E16" font-family="Georgia, Times New Roman, serif" font-size="48" font-weight="700">Observe. Reason. Review.</text>
-  <line x1="70" y1="158" x2="1330" y2="158" stroke="#241E16" stroke-width="2"/>
+  <desc id="desc">A three-station operations rail moves plant data through AI-assisted reasoning to an operator-reviewed decision.</desc>
+  <rect width="1400" height="720" fill="#F7F2E8"/>
+  <rect x="28" y="28" width="1344" height="664" fill="none" stroke="#1D1A17" stroke-width="2"/>
+  <rect x="28" y="28" width="10" height="664" fill="#A4773F"/>
+  <text x="70" y="78" fill="#A4773F" font-family="Courier New, monospace" font-size="14" font-weight="700" letter-spacing="2.5">CEMENT PLANT AI / OPERATIONS RAIL 01</text>
+  <text x="70" y="142" fill="#1D1A17" font-family="Georgia, Times New Roman, serif" font-size="50" font-weight="700">Observe. Reason. Review.</text>
+  <text x="1330" y="136" fill="#7A644B" font-family="Courier New, monospace" font-size="13" text-anchor="end">THE AGENT ADVISES · THE OPERATOR DECIDES</text>
+  <line x1="70" y1="174" x2="1330" y2="174" stroke="#D7C9B3" stroke-width="2"/>
 
-  <text x="70" y="214" fill="#665441" font-family="Courier New, monospace" font-size="15" font-weight="700" letter-spacing="2">01 / OBSERVE</text>
-  <text x="506" y="214" fill="#665441" font-family="Courier New, monospace" font-size="15" font-weight="700" letter-spacing="2">02 / REASON</text>
-  <text x="942" y="214" fill="#665441" font-family="Courier New, monospace" font-size="15" font-weight="700" letter-spacing="2">03 / REVIEW</text>
-
-  <rect x="70" y="248" width="342" height="98" fill="#241E16"/>
-  <text x="241" y="289" fill="#E6D1A7" font-family="Georgia, Times New Roman, serif" font-size="25" font-weight="700" text-anchor="middle">Plant + simulated data</text>
-  <text x="241" y="320" fill="#E6D1A7" font-family="Courier New, monospace" font-size="13" text-anchor="middle">PROCESS SIGNALS</text>
-  <rect x="70" y="374" width="342" height="98" fill="none" stroke="#241E16" stroke-width="3"/>
-  <text x="241" y="415" fill="#241E16" font-family="Georgia, Times New Roman, serif" font-size="25" font-weight="700" text-anchor="middle">PostgreSQL / Supabase</text>
-  <text x="241" y="446" fill="#665441" font-family="Courier New, monospace" font-size="13" text-anchor="middle">OPERATIONAL + HISTORICAL</text>
-
-  <rect x="506" y="248" width="342" height="98" fill="none" stroke="#241E16" stroke-width="3"/>
-  <text x="677" y="289" fill="#241E16" font-family="Georgia, Times New Roman, serif" font-size="25" font-weight="700" text-anchor="middle">FastAPI + WebSockets</text>
-  <text x="677" y="320" fill="#665441" font-family="Courier New, monospace" font-size="13" text-anchor="middle">API + LIVE DELIVERY</text>
-  <rect x="506" y="374" width="342" height="98" fill="#241E16"/>
-  <text x="677" y="415" fill="#E6D1A7" font-family="Georgia, Times New Roman, serif" font-size="25" font-weight="700" text-anchor="middle">LangGraph + Gemini</text>
-  <text x="677" y="446" fill="#E6D1A7" font-family="Courier New, monospace" font-size="13" text-anchor="middle">POSTGRESQL TOOLS VIA MCP</text>
-
-  <rect x="942" y="248" width="342" height="98" fill="#241E16"/>
-  <text x="1113" y="289" fill="#E6D1A7" font-family="Georgia, Times New Roman, serif" font-size="25" font-weight="700" text-anchor="middle">Operations dashboard</text>
-  <text x="1113" y="320" fill="#E6D1A7" font-family="Courier New, monospace" font-size="13" text-anchor="middle">KPIS + ALERTS + TRENDS</text>
-  <rect x="942" y="374" width="342" height="98" fill="none" stroke="#241E16" stroke-width="3"/>
-  <text x="1113" y="415" fill="#241E16" font-family="Georgia, Times New Roman, serif" font-size="25" font-weight="700" text-anchor="middle">Operator review</text>
-  <text x="1113" y="446" fill="#665441" font-family="Courier New, monospace" font-size="13" text-anchor="middle">RECOMMENDATION + EVIDENCE</text>
-
-  <g fill="none" stroke="#241E16" stroke-width="3">
-    <line x1="412" y1="360" x2="486" y2="360"/><path d="M474 350 L488 360 L474 370"/>
-    <line x1="848" y1="360" x2="922" y2="360"/><path d="M910 350 L924 360 L910 370"/>
+  <line x1="170" y1="338" x2="1230" y2="338" stroke="#1D1A17" stroke-width="5"/>
+  <g fill="#F7F2E8" stroke="#1D1A17" stroke-width="5">
+    <circle cx="240" cy="338" r="62"/><circle cx="700" cy="338" r="62"/><circle cx="1160" cy="338" r="62"/>
+  </g>
+  <circle cx="700" cy="338" r="48" fill="#A4773F"/>
+  <g font-family="Georgia, Times New Roman, serif" font-size="36" font-weight="700" text-anchor="middle">
+    <text x="240" y="351" fill="#1D1A17">01</text><text x="700" y="351" fill="#F7F2E8">02</text><text x="1160" y="351" fill="#1D1A17">03</text>
   </g>
 
-  <line x1="70" y1="546" x2="1330" y2="546" stroke="#B6A079" stroke-width="1"/>
-  <text x="70" y="590" fill="#241E16" font-family="Georgia, Times New Roman, serif" font-size="25" font-style="italic">The agent advises; the operator decides.</text>
-  <text x="70" y="628" fill="#665441" font-family="Arial, Helvetica, sans-serif" font-size="17">Prototype decision support—not a replacement for DCS, SCADA, or plant safety systems.</text>
-  <text x="1330" y="628" fill="#665441" font-family="Courier New, monospace" font-size="13" text-anchor="end">MODELED TARGETS · NOT FIELD RESULTS</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="240" y="238" fill="#1D1A17" font-size="25" font-weight="700" text-anchor="middle">Observe the plant</text>
+    <text x="700" y="238" fill="#1D1A17" font-size="25" font-weight="700" text-anchor="middle">Reason with context</text>
+    <text x="1160" y="238" fill="#1D1A17" font-size="25" font-weight="700" text-anchor="middle">Review the action</text>
+    <g fill="#7A644B" font-family="Courier New, monospace" font-size="14" text-anchor="middle">
+      <text x="240" y="442">PROCESS SIGNALS + HISTORY</text><text x="700" y="442">LANGGRAPH + GEMINI + MCP</text><text x="1160" y="442">KPIS + EVIDENCE + CONTROL</text>
+    </g>
+  </g>
+
+  <g font-family="Courier New, monospace" font-size="13">
+    <rect x="78" y="478" width="324" height="56" fill="#FFFFFF" stroke="#D7C9B3" stroke-width="2"/>
+    <text x="240" y="512" fill="#1D1A17" text-anchor="middle">PostgreSQL / Supabase</text>
+    <rect x="538" y="478" width="324" height="56" fill="#1D1A17"/>
+    <text x="700" y="512" fill="#F7F2E8" text-anchor="middle">FastAPI / WebSockets / tools</text>
+    <rect x="998" y="478" width="324" height="56" fill="#FFFFFF" stroke="#D7C9B3" stroke-width="2"/>
+    <text x="1160" y="512" fill="#1D1A17" text-anchor="middle">Next.js operator workspace</text>
+  </g>
+
+  <rect x="70" y="584" width="1260" height="62" fill="#1D1A17"/>
+  <text x="98" y="622" fill="#F7F2E8" font-family="Arial, Helvetica, sans-serif" font-size="17">Prototype decision support—not a replacement for DCS, SCADA, or plant safety systems.</text>
+  <text x="1302" y="622" fill="#DCC8A6" font-family="Courier New, monospace" font-size="12" text-anchor="end">MODELED TARGETS · NOT FIELD RESULTS</text>
 </svg>
